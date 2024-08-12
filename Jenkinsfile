@@ -1,15 +1,15 @@
 pipeline {
     agent any 
-    tools {
-        maven "3.8.5"
+    // tools {
+    //     maven "3.8.5"
     
-    }
+    // }
     stages {
         stage('Compile and Clean') { 
             steps {
                 // Run Maven on a Unix agent.
-              
-                sh "mvn clean compile"
+                sh "java --version"
+                sh "mvn clean"
             }
         }
         stage('deploy') { 
@@ -26,19 +26,19 @@ pipeline {
                 sh 'docker build -t  ashithss/assignment2:${BUILD_NUMBER} .'
             }
         }
-        stage('Docker Login'){
+        // stage('Docker Login'){
             
-            steps {
-                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                    sh "docker login -u ashithss -p ${Dockerpwd}"
-                }
-            }                
-        }
-        stage('Docker Push'){
-            steps {
-                sh 'docker push ashithss/assignment2:${BUILD_NUMBER}'
-            }
-        }
+        //     steps {
+        //          withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+        //             sh "docker login -u ashithss -p ${Dockerpwd}"
+        //         }
+        //     }                
+        // }
+        // stage('Docker Push'){
+        //     steps {
+        //         sh 'docker push ashithss/assignment2:${BUILD_NUMBER}'
+        //     }
+        // }
         stage('Docker deploy'){
             steps {
                
