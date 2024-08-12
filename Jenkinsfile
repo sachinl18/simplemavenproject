@@ -1,9 +1,9 @@
 pipeline {
     agent any 
-    // tools {
-    //     maven "3.8.5"
+    tools {
+        maven 
     
-    // }
+    }
     stages {
         stage('Compile and Clean') { 
             steps {
