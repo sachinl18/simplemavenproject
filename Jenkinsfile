@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     tools {
-        maven "2.8.5"
+        maven 'maven3'
     }
 
     environment {
-        BRANCH_NAME = env.BRANCH_NAME
+        BRANCH_NAME = "${env.BRANCH_NAME}"
         DOCKER_IMAGE = "sachinl:${BUILD_NUMBER}"
         DEPLOY_PORT = getDeployPort(BRANCH_NAME)
     }
