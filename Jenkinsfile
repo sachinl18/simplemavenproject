@@ -78,7 +78,7 @@ def getDeployPort(String branchName) {
         case 'Prod':
             return "8083"
         default:
-            return "8080"
+            return "8084"
     }
 }
 
